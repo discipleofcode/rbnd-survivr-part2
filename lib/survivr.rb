@@ -1,3 +1,4 @@
+require "colorizr"
 require_relative "game"
 require_relative "tribe"
 require_relative "contestant"
@@ -19,6 +20,14 @@ require_relative "jury"
 
 
 #This is where you will write your code for the three phases
+
+def get_loser_out
+  immune_contestant = @borneo.individual_immunity_challenge
+  loser = @merge_tribe.tribal_council immune: immune_contestant
+  @merge_tribe.members.delete loser
+  return loser
+end
+
 def phase_one
   
   8.times do |turn|
@@ -32,9 +41,7 @@ end
 def phase_two
   
   3.times do |turn|
-    immune_contestant = @borneo.individual_immunity_challenge
-    loser = @merge_tribe.tribal_council immune: immune_contestant
-    @merge_tribe.members.delete loser
+    get_loser_out
   end
   
 end
@@ -42,10 +49,7 @@ end
 def phase_three
   
   7.times do |turn|
-    immune_contestant = @borneo.individual_immunity_challenge
-    loser = @merge_tribe.tribal_council immune: immune_contestant
-    @merge_tribe.members.delete loser
-    @jury.add_member loser
+    @jury.add_member get_loser_out
   end
   
 end

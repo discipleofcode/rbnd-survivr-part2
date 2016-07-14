@@ -2,7 +2,7 @@ class Tribe
   attr_reader :name, :members
   
   def initialize options = {}
-    @name = options[:name]
+    @name = options[:name].green
     @members = options[:members]
     puts to_s
     print_members
@@ -13,7 +13,7 @@ class Tribe
   end
   
   def print_members
-    puts "-" * @name.length
+    puts ("-" * 8).green
     puts @members.map{ |member| "#{member}"}.join(", ")
     puts
   end

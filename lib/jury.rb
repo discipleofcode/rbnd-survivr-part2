@@ -31,8 +31,8 @@ class Jury
   
   def report_votes votes    
     votes.each do |finalist, score|
-      start_string = "#{finalist} got #{score} "
-      score != 1 ? (puts start_string + "votes") : (puts start_string + "vote")
+      start_string = "#{finalist} got #{score} ".yellow
+      score != 1 ? (puts start_string + "votes".yellow) : (puts start_string + "vote".yellow)
     end
   end
   
