@@ -22,14 +22,14 @@ class Jury
   def randomize_votes votes, finalists
     @members.each do |member|
       chosen_finalist = finalists.sample
-      puts chosen_finalist
+      puts "#{member.name} votes for #{chosen_finalist}"
       votes[chosen_finalist] += 1
     end
     
     return votes
   end
   
-  def report_votes votes
+  def report_votes votes    
     votes.each do |finalist, score|
       start_string = "#{finalist} got #{score} "
       score != 1 ? (puts start_string + "votes") : (puts start_string + "vote")
