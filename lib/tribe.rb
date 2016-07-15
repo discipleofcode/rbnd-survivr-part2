@@ -9,7 +9,9 @@ class Tribe
   end
   
   def tribal_council options={}
-    @members.reject{ |member| member == options[:immune]}.sample
+     loser = @members.reject{ |member| member == options[:immune]}.sample
+     # I could do this in one line but it would be less readable in my opinion
+     @members.delete loser
   end
   
   def print_members

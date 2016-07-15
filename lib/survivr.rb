@@ -23,17 +23,14 @@ require_relative "jury"
 
 def get_loser_out
   immune_contestant = @borneo.individual_immunity_challenge
-  loser = @merge_tribe.tribal_council immune: immune_contestant
-  @merge_tribe.members.delete loser
-  return loser
+  @merge_tribe.tribal_council immune: immune_contestant
 end
 
 def phase_one
   
   8.times do |turn|
     losers_tribe = @borneo.immunity_challenge
-    loser = losers_tribe.tribal_council
-    losers_tribe.members.delete loser
+    losers_tribe.tribal_council
   end
   
 end

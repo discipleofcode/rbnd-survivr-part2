@@ -44,7 +44,9 @@ class Jury
   end
   
   def announce_winner votes
-    votes.max_by{|finalist, score| score}[0]
+    winner = votes.max_by{|finalist, votes| votes}.first
+    puts ">> Winner: #{winner}. Congratulations <<".yellow
+    return winner
   end
 
 end

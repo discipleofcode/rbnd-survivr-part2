@@ -2,8 +2,8 @@ class Game
   
   attr_reader :tribes
   
-  def initialize team_valor, team_mystic
-    @tribes = [team_valor, team_mystic]
+  def initialize *tribes
+    @tribes = tribes
   end
   
   def add_tribe tribe
@@ -36,7 +36,7 @@ class Game
   end
   
   def individual_immunity_challenge
-    merge_all_tribes.sample
+    @tribes.first.members.sample
   end
   
 end
